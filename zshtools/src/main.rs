@@ -1,7 +1,6 @@
 use std::env;
 use std::fs::OpenOptions;
 use std::io::{self, Write};
-use std::path::Path;
 use std::process::Command;
 
 fn get_filename() -> String {
@@ -53,7 +52,11 @@ fn main() {
         args[1].clone()
     };
 
-    let second_brain = env::var("SECOND_BRAIN").expect("SECOND_BRAIN environment variable not set");
+    let second_brain = env::var("SECOND_BRAIN").unwrap_or_else(|_| {
+        eprintln!("Error: SECOND_BRAIN environment variable not set.");
+        std::process::exit(1);
+    });
+
     let dir = format!("{}/0 Inbox", second_brain);
 
     open_file(&dir, &filename);
