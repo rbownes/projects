@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "swarm-host"
+version = "0.1.0"
+description = "a test repo for trialling openai swarm"
+authors = ["Richard Bownes <rjbownes@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+swarm = {git = "https://github.com/openai/swarm.git"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
